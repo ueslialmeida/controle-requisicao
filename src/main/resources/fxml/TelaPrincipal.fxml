@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.videosoft.controller.TelaPrincipalController">
+    <stylesheets>
+        <URL value="@/styles/telaprincipal.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="1.0" layoutY="5.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Arquivo">
+                  <items>
+                    <MenuItem fx:id="menuSair" mnemonicParsing="false" onAction="#sair" text="Sair" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <TabPane prefHeight="622.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+              <tabs>
+                <Tab fx:id="tabRequisicao" text="Requisições">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="880.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label prefHeight="15.0" prefWidth="130.0" text="Pesquisar por Data">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <DatePicker fx:id="dtpPesquisaRequisicao" prefHeight="25.0" prefWidth="163.0" promptText="dd/mm/aaaa">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </DatePicker>
+                                          <Label text="ou">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txtPesquisaRequisicao" prefHeight="25.0" prefWidth="272.0" promptText="Responsavel, Produto...">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button fx:id="btnPesquisarRequisicao" mnemonicParsing="false" onAction="#handleButtonPesquisarRequisicao" text="Pesquisar" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT">
+                                       <children>
+                                          <Button fx:id="btnAddRequisicao" mnemonicParsing="false" onAction="#handleButtonAddRequisicao" text="Adicionar">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="btnEditarRequisicao" mnemonicParsing="false" onAction="#handleButtonEditarRequisicao" text="Editar">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="btnSalvarRequisicao" mnemonicParsing="false" onAction="#handleButtonSalvarRequisicao" text="Salvar">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin></Button>
+                                          <Button fx:id="btnCancelarRequisicao" mnemonicParsing="false" onAction="#handleButtonCancelarRequisicao" text="Cancelar" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="566.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <TableView fx:id="tbvRequisicao" prefHeight="482.0" prefWidth="622.0" HBox.hgrow="ALWAYS">
+                                      <columns>
+                                        <TableColumn fx:id="colIdRequisicao" editable="false" resizable="false" text="ID" />
+                                        <TableColumn fx:id="colCodRequisicao" editable="false" prefWidth="90.0" resizable="false" text="CÓD. ERP" />
+                                          <TableColumn fx:id="colDataRequisicao" editable="false" prefWidth="110.0" resizable="false" text="DATA" />
+                                          <TableColumn fx:id="colResponsavel" editable="false" minWidth="-Infinity" prefWidth="241.0" text="RESPONSÁVEL" />
+                                      </columns>
+                                       <HBox.margin>
+                                          <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                       </HBox.margin>
+                                    </TableView>
+                                    <VBox prefHeight="488.0" prefWidth="469.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox prefHeight="45.0" prefWidth="366.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Label text="ID" />
+                                                      <TextField fx:id="txtIdRequisicao" prefHeight="25.0" prefWidth="63.0">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Label text="Código" />
+                                                      <TextField fx:id="txtCodRequisicao">
+                                                         <VBox.margin>
+                                                            <Insets right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label text="Data" />
+                                                      <DatePicker fx:id="dtpDataRequisicao" prefHeight="25.0" prefWidth="167.0">
+                                                         <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                         </VBox.margin>
+                                                      </DatePicker>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Label text="Responsável">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txtResponsavel">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Produtos da Requisição">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <HBox layoutX="15.0" layoutY="15.0" prefHeight="45.0" prefWidth="366.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="70.0">
+                                                   <children>
+                                                      <Label text="Código">
+                                                         <VBox.margin>
+                                                            <Insets left="5.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                      <TextField fx:id="txtCodigoProdutoRequisicao" prefHeight="25.0" prefWidth="30.0">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="60.0">
+                                                   <children>
+                                                      <Label text="Qtde.">
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                      <TextField fx:id="txtQuantidadeProdutoRequisicao" prefHeight="25.0" prefWidth="65.0">
+                                                         <VBox.margin>
+                                                            <Insets right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label text="Descrição" />
+                                                      <TextField fx:id="txtDescricaoProdutoRequisicao" prefHeight="25.0" prefWidth="202.0">
+                                                         <VBox.margin>
+                                                            <Insets right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="90.0">
+                                                   <children>
+                                                      <Button fx:id="btnAddProdutoRequisicao" mnemonicParsing="false" onAction="#handleButtonAddProdutoRequisicao" prefHeight="25.0" prefWidth="83.0" text="Adicionar">
+                                                         <VBox.margin>
+                                                            <Insets top="20.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <TableView fx:id="tbvProdutoRequisicao" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                              <TableColumn fx:id="colCodProdutoRequisicao" prefWidth="85.0" text="CÓD." />
+                                              <TableColumn fx:id="colQtdeProdutoRequisicao" prefWidth="60.0" text="QTDE." />
+                                                <TableColumn fx:id="colDescricaoProdutoRequisicao" prefWidth="258.0" text="DESCRIÇÃO" />
+                                            </columns>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </VBox.margin>
+                                          </TableView>
+                                          <HBox>
+                                             <children>
+                                                <Button fx:id="btnRemoverProdutoRequisicao" mnemonicParsing="false" onAction="#handleButtonRemoverProdutoRequisicao" text="Remover Produto Selecionado" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Label text="Observações">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextArea fx:id="txtObsRequisicao" prefHeight="145.0" prefWidth="366.0">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </VBox.margin>
+                                          </TextArea>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+                <Tab fx:id="tabDevolucao" text="Devoluções">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="880.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label prefHeight="15.0" prefWidth="130.0" text="Pesquisar por Data">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <DatePicker fx:id="dtpPesquisaDevolucao" prefHeight="25.0" prefWidth="163.0" promptText="dd/mm/aaaa">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </DatePicker>
+                                          <Label text="ou">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txtPesquisaDevolucao" prefHeight="25.0" prefWidth="272.0" promptText="Responsavel, Produto...">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button fx:id="btnPesquisarDevolucao" mnemonicParsing="false" onAction="#handleButtonPesquisarDevolucao" text="Pesquisar" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT">
+                                       <children>
+                                          <Button fx:id="btnAddDevolucao" mnemonicParsing="false" onAction="#handleButtonAddDevolucao" text="Adicionar">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="btnEditarDevolucao" mnemonicParsing="false" onAction="#handleButtonEditarDevolucao" text="Editar">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="btnSalvarDevolucao" mnemonicParsing="false" onAction="#handleButtonSalvarDevolucao" text="Salvar">
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin></Button>
+                                          <Button fx:id="btnCancelarDevolucao" mnemonicParsing="false" onAction="#handleButtonCancelarDevolucao" text="Cancelar" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="566.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <TableView fx:id="tbvDevolucao" prefHeight="482.0" prefWidth="622.0" HBox.hgrow="ALWAYS">
+                                       <columns>
+                                          <TableColumn fx:id="colIdDevolucao" editable="false" resizable="false" text="ID" />
+                                          <TableColumn fx:id="colCodDevolucao" prefWidth="90.0" text="CÓD. ERP" />
+                                          <TableColumn fx:id="colDataDevolucao" prefWidth="110.0" text="DATA" />
+                                       </columns>
+                                       <HBox.margin>
+                                          <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                       </HBox.margin>
+                                    </TableView>
+                                    <VBox prefHeight="488.0" prefWidth="469.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox prefHeight="45.0" prefWidth="366.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Label text="ID" />
+                                                      <TextField fx:id="txtIdDevolucao" prefWidth="63.0">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Label text="Código" />
+                                                      <TextField fx:id="txtCodDevolucao">
+                                                         <VBox.margin>
+                                                            <Insets right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="50.0" prefWidth="154.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label text="Data" />
+                                                      <DatePicker fx:id="dtpDataDevolucao" prefHeight="25.0" prefWidth="167.0">
+                                                         <VBox.margin>
+                                                            <Insets top="5.0" />
+                                                         </VBox.margin>
+                                                      </DatePicker>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Label text="Produtos da Devolução">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <HBox prefHeight="45.0" prefWidth="366.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="70.0">
+                                                   <children>
+                                                      <Label text="Código">
+                                                         <VBox.margin>
+                                                            <Insets left="5.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                      <TextField fx:id="txtCodigoProdutoDevolucao" prefHeight="25.0" prefWidth="30.0">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="60.0">
+                                                   <children>
+                                                      <Label text="Qtde.">
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                      <TextField fx:id="txtQuantidadeProdutoDevolucao" prefHeight="25.0" prefWidth="65.0">
+                                                         <VBox.margin>
+                                                            <Insets right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label text="Descrição" />
+                                                      <TextField fx:id="txtDescricaoProdutoDevolucao" prefHeight="25.0" prefWidth="202.0">
+                                                         <VBox.margin>
+                                                            <Insets right="5.0" top="5.0" />
+                                                         </VBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </VBox>
+                                                <VBox prefHeight="200.0" prefWidth="90.0">
+                                                   <children>
+                                                      <Button fx:id="btnAddProdutoDevolucao" mnemonicParsing="false" onAction="#handleButtonAddProdutoDevolucao" prefHeight="25.0" prefWidth="83.0" text="Adicionar">
+                                                         <VBox.margin>
+                                                            <Insets top="20.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <TableView fx:id="tbvProdutoDevolucao" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                              <TableColumn fx:id="colCodProdutoDevolucao" prefWidth="85.0" text="CÓD." />
+                                              <TableColumn fx:id="colQtdeProdutoDevolucao" prefWidth="60.0" text="QTDE." />
+                                                <TableColumn fx:id="colDescricaoProdutoDevolucao" prefWidth="179.0" text="DESCRIÇÃO" />
+                                            </columns>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </VBox.margin>
+                                          </TableView>
+                                          <HBox>
+                                             <children>
+                                                <Button fx:id="btnRemoverProdutoDevolucao" mnemonicParsing="false" onAction="#handleButtonRemoverProdutoDevolucao" text="Remover Produto Selecionado" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets left="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <Label text="Observações">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextArea fx:id="txtObsDevolucao" prefHeight="145.0" prefWidth="356.0">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                             </VBox.margin>
+                                          </TextArea>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="tabMovimentacaoDeProdutos" text="Movimentaçao de Produtos">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tbvProdutosSaldo" layoutX="8.0" layoutY="48.0" prefHeight="482.0" prefWidth="983.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="48.0">
+                                <columns>
+                                  <TableColumn fx:id="colCodReduzidoProdutoSaldo" prefWidth="135.0" text="CÓD. REDUZIDO" />
+                                    <TableColumn fx:id="colDescricaoProdutoSaldo" prefWidth="744.0" text="DESCRIÇÃO" />
+                                    <TableColumn fx:id="colSaldo" minWidth="0.0" prefWidth="100.0" text="SALDO" />
+                                </columns>
+                              </TableView>
+                              <TextField fx:id="txtFiltroProdutos" layoutX="8.0" layoutY="11.0" prefHeight="26.0" prefWidth="305.0" promptText="Descrição, código reduzido..." AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="11.0" />
+                              <Button fx:id="btnFiltrarProdutos" layoutX="317.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleButtonFiltrarProdutos" text="Filtrar Produtos" AnchorPane.leftAnchor="317.0" AnchorPane.topAnchor="11.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
